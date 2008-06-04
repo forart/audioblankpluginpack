@@ -1,0 +1,17 @@
+Radians (JS plugins, gfx_blit's rotation is in radians)
+
+One radian is the angle of an arc created by wrapping the radius of a circle around its circumference.
+
+The radius 'r' fits around the circumference of a circle exactly 2p times. That is why the circumference of a circle is given by:
+
+            circumference = 2pr
+
+So there are 2p radians in a complete circle, and p radians in a half circle.
+
+
+~~~~~~~~
+
+Dialer knob divided as 12 units. Code for rotating knob image
+gfx_blit(0,.6,n*2*$pi/12); // n= unit dialed. 0-11
+
+Marshall amp's knobs have 12 units. Units 11 & 12 (n=10, 11) are not dialable. 

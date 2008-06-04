@@ -1,0 +1,96 @@
+// AudioBlank plugin simulating Marshall MG 15 CD Guitar Amp
+// Useful for keeping the settings used in amp to record a guitar track.
+// Doesn't process audio.
+
+// Part of AudioBlank Plugin Pack
+// Copyright (C) 2008 Ananth
+// License: GPL V3 - http://www.gnu.org/licenses/gpl-3.0.html
+
+
+
+desc: AudioBlank Marshall MG15 CD Guitar Amp
+
+// Sliders for knobs
+slider1: 3 <0,10,.1> Clean Volume
+slider2: 0 <0,10,.1> Overdrive Gain
+slider3: 0 <0,10,.1> Overdrive Volume
+slider4: 5 <0,10,.1> Bass
+slider5: 5 <0,10,.1> Contour
+slider6: 5 <0,10,.1> Treble
+// Sliders for switches
+slider7: 0 <0,1,1> Channel Select
+slider8: 1 <0,1,1> fdd
+
+
+filename:0,marshall_mg15cd_stuff/panel.png
+filename:1,marshall_mg15cd_stuff/knob.png
+filename:2,marshall_mg15cd_stuff/switch_off.png
+filename:3,marshall_mg15cd_stuff/switch_on.png
+
+@init
+gfx_clear = -1;
+gfx_a=1;
+//gfx_mode=2.0; //use this to disable super alpha blending. if background image goes dark
+
+
+knob_y=49;  //top row where all knobs aligned
+knob_w=45;
+knob_h=45;
+
+knob1_x=31; //Clean Volume
+knob2_x=160; // OD Gain
+knob3_x=225; // OD Volume
+knob4_x=304; // EQ: Bass
+knob5_x=367; // EQ: Contour
+knob6_x=429; // EQ: Bass
+
+// Switch1 => Channel select  (clean/overdrive)
+switch1_x=109; //was 115
+switch1_y=48;  //was 60;
+
+// Switch2 => fdd select (frequency dependent damping)
+switch2_x=503; //was 520;
+switch2_y=48;  //was45;
+
+switch_xoffset=-10; // For rotations. switch size is 20x20 pixels.
+switch_yoffset=10; // switches are to be rotated with bottom left as axis. 
+		  // these offsets point to bottom left (offset from center)
+
+@gfx 650 144
+
+
+//draw background
+// syntax: gfx_blit (source, scale, rotation in radians)
+
+  gfx_blit(0,1,0);
+
+//Drawing knobs
+// todo: Use arrays and loops instead.
+
+gfx_x=knob1_x; gfx_y=knob_y;
+gfx_blit(1,1,slider1*2*$pi/12);
+
+gfx_x=knob2_x; gfx_y=knob_y;
+gfx_blit(1,1,slider2*2*$pi/12);
+
+gfx_x=knob3_x; gfx_y=knob_y;
+gfx_blit(1,1,slider3*2*$pi/12);
+
+gfx_x=knob4_x; gfx_y=knob_y;
+gfx_blit(1,1,slider4*2*$pi/12);
+
+gfx_x=knob5_x; gfx_y=knob_y;
+gfx_blit(1,1,slider5*2*$pi/12);
+
+gfx_x=knob6_x; gfx_y=knob_y;
+gfx_blit(1,1,slider6*2*$pi/12);
+
+// and switches
+gfx_x=switch1_x; gfx_y=switch1_y;
+slider7==0? ( gfx_y+=20; gfx_blit(2,1,0) ) :  ( gfx_blit(3,1,0););
+
+gfx_x=switch2_x; gfx_y=switch2_y;
+slider8==0? (gfx_y+=20; gfx_blit(2,1,0)): ( gfx_blit(3,1,0););
+
+
+gfx_x=0; gfx_y=0;
