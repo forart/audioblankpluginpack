@@ -1,0 +1,21 @@
+// AudioBlank plugin simulating Marshall MG 15 CD Guitar Amp
+// Useful for keeping the settings used in amp to record a guitar track.
+// Doesn't process audio.
+
+// Part of AudioBlank Plugin Pack
+// http://audioblank.googlepages.com
+
+// Copyright (C) 2008 Ananth
+// License: GPL V3 - http://www.gnu.org/licenses/gpl-3.0.html
+
+desc: AudioBlank Yamaha Pacifica Electric Guitar 
+
+// Sliders for knobs
+slider1: 10 <0,10,.1> Volume
+slider2: 10 <0,10,.1> Tone
+// Sliders for switches
+slider3: 5 <1,5,1> Pickup Select
+
+
+// GUI yet to be done.
+
